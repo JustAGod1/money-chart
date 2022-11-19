@@ -47,13 +47,15 @@ async fn handle_message(bot: Bot, msg: Message, db: DbConnection) -> ResponseRes
 }
 
 fn get_names(db: DbConnection) -> Vec<String> {
-    use crate::schema::s_transactions::dsl::*;
+    use crate::schema::s_names::dsl::*;
     let mut conn = db.lock().unwrap();
 
-    let results = s_transactions.select(name)
-        .group_by(name)
+    let results = s_names.select(name)
         .load::<String>(&mut *conn)
         .expect("Error loading posts");
+
+
+    println!("{}", results.join("\n"));
 
     results
 }
@@ -86,7 +88,7 @@ async fn admin_way(bot: Bot, msg: Message, db: DbConnection) -> ResponseResult<(
             bot.send_message(chat_id, "Hello!").await?;
         } else if text.starts_with("/names") {
             let names = get_names(db);
-            bot.send_message(chat_id, format!("{:?}", names.join("\n"))).await?;
+            bot.send_message(chat_id, names.join("\n")).await?;
         } else if text.starts_with("/add") {
             let content = &text[4..];
             let idx = content.rfind(' ');
