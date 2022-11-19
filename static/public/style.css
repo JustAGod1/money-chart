@@ -1,0 +1,10 @@
+.center {
+    position: relative;
+    margin: auto;
+    width: 60vw !important;
+    color: red;
+}
+
+body {
+    background-color: #100C2A;
+}

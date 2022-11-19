@@ -1,0 +1,6 @@
+/target
+.idea/
+static/dist
+static/node_modules
+tls/
+.env
