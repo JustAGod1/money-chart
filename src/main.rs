@@ -33,7 +33,7 @@ async fn main() {
 
     let db = open_db_connection();
 
-    join!(http::serve_http(db.clone())/*,tg::run_tg_bot(db.clone())*/);
+    join!(http::serve_http(db.clone()),tg::run_tg_bot(db.clone()));
 
 }
 
