@@ -1,7 +1,6 @@
-use std::borrow::BorrowMut;
 use teloxide::prelude::*;
 use diesel::prelude::*;
-use teloxide::types::{Me, MediaKind, MessageCommon, MessageKind, User};
+use teloxide::types::{MediaKind, MessageCommon, MessageKind, User};
 use crate::DbConnection;
 
 pub async fn run_tg_bot(db: DbConnection) {
@@ -71,7 +70,7 @@ fn add_transaction(db: DbConnection, name: String, amount: f64) -> Result<(), St
     diesel::insert_into(s_transactions)
         .values(&value)
         .execute(&mut *conn)
-        .map(|a| ())
+        .map(|_| ())
         .map_err(|e| format!("{:?}", e))
 }
 

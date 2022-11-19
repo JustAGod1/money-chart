@@ -1,5 +1,4 @@
 use diesel::prelude::*;
-use serde::Serialize;
 
 #[derive(Queryable)]
 pub struct Name {
