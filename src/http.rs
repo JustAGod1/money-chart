@@ -1,3 +1,4 @@
+use std::str::FromStr;
 use diesel::dsl::{sql};
 use warp::{Filter};
 use warp::reply::Json;
@@ -35,9 +36,7 @@ pub(crate) async fn serve_http(db: DbConnection) {
 
     warp::serve(server)
         .tls()
-        .cert_path("tls/cert.pem")
-        .key_path("tls/privkey.pem")
-        .run(([0,0,0,0], 3030)).await;
+        .run(([0,0,0,0], u16::from_str(&std::env::var("port").unwrap()).unwrap())).await;
 }
 
 fn request_data(db: DbConnection) -> Json {
