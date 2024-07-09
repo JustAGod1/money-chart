@@ -35,7 +35,6 @@ pub(crate) async fn serve_http(db: DbConnection) {
 
 
     warp::serve(server)
-        .tls()
         .run(([0,0,0,0], u16::from_str(&std::env::var("port").unwrap()).unwrap())).await;
 }
 

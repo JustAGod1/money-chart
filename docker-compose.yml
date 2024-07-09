@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  money-charts:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://charts:qwerty@db/charts
+      - TELOXIDE_TOKEN=5956183564:AAFBmSyDDNwYGeXDm25nV077bkFBSZ5K5FM
+      - port=80
+    ports:
+      - 127.0.0.1:8090:80
+  db:
+    image: postgres:16.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_USER=charts
