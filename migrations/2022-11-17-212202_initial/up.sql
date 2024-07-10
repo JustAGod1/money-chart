@@ -17,7 +17,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: diesel_manage_updated_at(regclass); Type: FUNCTION; Schema: public; Owner: storozhno
+-- Name: diesel_manage_updated_at(regclass); Type: FUNCTION; Schema: public; Owner: charts
 --
 
 CREATE FUNCTION public.diesel_manage_updated_at(_tbl regclass) RETURNS void
@@ -30,10 +30,10 @@ END;
 $$;
 
 
-ALTER FUNCTION public.diesel_manage_updated_at(_tbl regclass) OWNER TO storozhno;
+ALTER FUNCTION public.diesel_manage_updated_at(_tbl regclass) OWNER TO charts;
 
 --
--- Name: diesel_set_updated_at(); Type: FUNCTION; Schema: public; Owner: storozhno
+-- Name: diesel_set_updated_at(); Type: FUNCTION; Schema: public; Owner: charts
 --
 
 CREATE FUNCTION public.diesel_set_updated_at() RETURNS trigger
@@ -51,14 +51,14 @@ END;
 $$;
 
 
-ALTER FUNCTION public.diesel_set_updated_at() OWNER TO storozhno;
+ALTER FUNCTION public.diesel_set_updated_at() OWNER TO charts;
 
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: __diesel_schema_migrations; Type: TABLE; Schema: public; Owner: storozhno
+-- Name: __diesel_schema_migrations; Type: TABLE; Schema: public; Owner: charts
 --
 
 CREATE TABLE public.__diesel_schema_migrations (
@@ -67,10 +67,10 @@ CREATE TABLE public.__diesel_schema_migrations (
 );
 
 
-ALTER TABLE public.__diesel_schema_migrations OWNER TO storozhno;
+ALTER TABLE public.__diesel_schema_migrations OWNER TO charts;
 
 --
--- Name: s_names; Type: TABLE; Schema: public; Owner: storozhno
+-- Name: s_names; Type: TABLE; Schema: public; Owner: charts
 --
 
 CREATE TABLE public.s_names (
@@ -78,10 +78,10 @@ CREATE TABLE public.s_names (
 );
 
 
-ALTER TABLE public.s_names OWNER TO storozhno;
+ALTER TABLE public.s_names OWNER TO charts;
 
 --
--- Name: s_transactions; Type: TABLE; Schema: public; Owner: storozhno
+-- Name: s_transactions; Type: TABLE; Schema: public; Owner: charts
 --
 
 CREATE TABLE public.s_transactions (
@@ -91,10 +91,10 @@ CREATE TABLE public.s_transactions (
 );
 
 
-ALTER TABLE public.s_transactions OWNER TO storozhno;
+ALTER TABLE public.s_transactions OWNER TO charts;
 
 --
--- Name: s_transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: storozhno
+-- Name: s_transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: charts
 --
 
 CREATE SEQUENCE public.s_transactions_id_seq
@@ -106,56 +106,31 @@ CREATE SEQUENCE public.s_transactions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.s_transactions_id_seq OWNER TO storozhno;
+ALTER TABLE public.s_transactions_id_seq OWNER TO charts;
 
 --
--- Name: s_transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: storozhno
+-- Name: s_transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charts
 --
 
 ALTER SEQUENCE public.s_transactions_id_seq OWNED BY public.s_transactions.id;
 
 
 --
--- Name: s_transactions id; Type: DEFAULT; Schema: public; Owner: storozhno
+-- Name: s_transactions id; Type: DEFAULT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.s_transactions ALTER COLUMN id SET DEFAULT nextval('public.s_transactions_id_seq'::regclass);
 
 
 --
--- Data for Name: __diesel_schema_migrations; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.__diesel_schema_migrations (version, run_on) FROM stdin;
-00000000000000	2022-11-17 21:31:07.379055
-\.
-
-
---
--- Data for Name: s_names; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.s_names (name) FROM stdin;
-\.
-
-
---
--- Data for Name: s_transactions; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.s_transactions (name, amount, id) FROM stdin;
-\.
-
-
---
--- Name: s_transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: storozhno
+-- Name: s_transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: charts
 --
 
 SELECT pg_catalog.setval('public.s_transactions_id_seq', 1, false);
 
 
 --
--- Name: __diesel_schema_migrations __diesel_schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: storozhno
+-- Name: __diesel_schema_migrations __diesel_schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.__diesel_schema_migrations
@@ -163,7 +138,7 @@ ALTER TABLE ONLY public.__diesel_schema_migrations
 
 
 --
--- Name: s_names key_name; Type: CONSTRAINT; Schema: public; Owner: storozhno
+-- Name: s_names key_name; Type: CONSTRAINT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.s_names
@@ -171,7 +146,7 @@ ALTER TABLE ONLY public.s_names
 
 
 --
--- Name: s_names s_names_pk; Type: CONSTRAINT; Schema: public; Owner: storozhno
+-- Name: s_names s_names_pk; Type: CONSTRAINT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.s_names
@@ -179,7 +154,7 @@ ALTER TABLE ONLY public.s_names
 
 
 --
--- Name: s_transactions s_transactions_pk; Type: CONSTRAINT; Schema: public; Owner: storozhno
+-- Name: s_transactions s_transactions_pk; Type: CONSTRAINT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.s_transactions
@@ -187,7 +162,7 @@ ALTER TABLE ONLY public.s_transactions
 
 
 --
--- Name: s_transactions s_transactions_s_names_null_fk; Type: FK CONSTRAINT; Schema: public; Owner: storozhno
+-- Name: s_transactions s_transactions_s_names_null_fk; Type: FK CONSTRAINT; Schema: public; Owner: charts
 --
 
 ALTER TABLE ONLY public.s_transactions
