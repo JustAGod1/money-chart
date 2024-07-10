@@ -8,6 +8,9 @@ services:
       - POSTGRES_USER=charts
     volumes:
       - type: bind
+        source: /postgres/charts
+        target: /var/lib/postgresql/data
+      - type: bind
         source: up.sql
         target: /docker-entrypoint-initdb.d/init.sql
         read_only: true
