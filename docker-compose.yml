@@ -1,6 +1,11 @@
 version: "3.9"
 
 services:
+  db:
+    image: postgres:16.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_USER=charts
   money-charts:
     build: .
     environment:
@@ -9,8 +14,3 @@ services:
       - port=80
     ports:
       - 127.0.0.1:8090:80
-  db:
-    image: postgres:16.3-alpine
-    environment:
-      - POSTGRES_PASSWORD=qwerty
-      - POSTGRES_USER=charts

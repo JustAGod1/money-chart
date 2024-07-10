@@ -123,31 +123,6 @@ ALTER TABLE ONLY public.s_transactions ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- Data for Name: __diesel_schema_migrations; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.__diesel_schema_migrations (version, run_on) FROM stdin;
-00000000000000	2022-11-17 21:31:07.379055
-\.
-
-
---
--- Data for Name: s_names; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.s_names (name) FROM stdin;
-\.
-
-
---
--- Data for Name: s_transactions; Type: TABLE DATA; Schema: public; Owner: storozhno
---
-
-COPY public.s_transactions (name, amount, id) FROM stdin;
-\.
-
-
---
 -- Name: s_transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: storozhno
 --
 
