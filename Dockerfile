@@ -28,5 +28,6 @@ WORKDIR /work
 
 COPY --from=build /build/target/release/money-chart /work
 COPY . /diesel
+COPY static .
 
 CMD /bin/bash -c "cd /diesel && diesel setup && cd /work && /work/money-chart" 
