@@ -1,4 +1,6 @@
 Dockerfile
 target/
+static/dist
+static/node_modules
 docker-compose.yml
 .dockerignore

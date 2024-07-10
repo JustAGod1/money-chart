@@ -1,7 +1,8 @@
 FROM debian:12.6 as build
 
 RUN apt-get update
-RUN apt-get -y install curl build-essential libssl-dev libpq-dev pkg-config
+RUN apt-get -y install curl build-essential libssl-dev libpq-dev pkg-config npm bash ca-certificates 
+RUN update-ca-certificates
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
@@ -12,6 +13,7 @@ COPY . .
 
 RUN cargo build --release
 
+RUN  /bin/bash -c "cd static && npm install && npm run build:prod"
 
 FROM debian:12.6 as run
 
@@ -26,6 +28,6 @@ RUN mkdir /work
 WORKDIR /work
 
 COPY --from=build /build/target/release/money-chart /work
-COPY static static
+COPY --from=build /build/static static
 
 CMD /bin/bash -c "/work/money-chart" 
