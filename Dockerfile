@@ -26,6 +26,6 @@ RUN mkdir /work
 WORKDIR /work
 
 COPY --from=build /build/target/release/money-chart /work
-COPY static .
+COPY static static
 
 CMD /bin/bash -c "/work/money-chart" 
