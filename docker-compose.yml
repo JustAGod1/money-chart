@@ -8,6 +8,14 @@ services:
       - POSTGRES_USER=charts
   money-charts:
     build: .
+    volumes:
+      - type: bind
+        source: up.sql
+        target: /docker-entrypoint-initdb.d/init.sql
+        read_only: true
+        bind:
+          create_host_path: false
+    
     environment:
       - DATABASE_URL=postgresql://charts:qwerty@db/charts
       - TELOXIDE_TOKEN=${BOT_TOKEN}
