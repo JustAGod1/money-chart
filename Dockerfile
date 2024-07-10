@@ -23,11 +23,9 @@ RUN curl --proto '=https' --tlsv1.2 -LsSf https://github.com/diesel-rs/diesel/re
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN mkdir /work
-RUN mkdir /diesel
 WORKDIR /work
 
 COPY --from=build /build/target/release/money-chart /work
-COPY . /diesel
 COPY static .
 
-CMD /bin/bash -c "cd /diesel && diesel setup && cd /work && /work/money-chart" 
+CMD /bin/bash -c "/work/money-chart" 
